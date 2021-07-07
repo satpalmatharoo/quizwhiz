@@ -2,9 +2,12 @@
 var start = document.querySelector ("#Begin")
 var Rules = document.querySelector ("#Rules")
 var Timer = document.querySelector ("#secondsLeft")
+var questionElement= document.querySelector (question)
+var answerElement = document.querySelector (answer)
 var questionContainer = document.querySelector ("#questionContainer")
 var GameState = {
     timeOff: 60
+
 }
 
 
@@ -14,7 +17,13 @@ start.addEventListener("click",()=>{
     start.style.display = "none";
     Rules.style.display = "block";
     countdownTimer();
+    questionContainer = document.querySelector ("#questionContainer")
+    setNextQuestion
 })
+
+function setNextQuestion(question){
+
+
 function countdownTimer(){
     var countdown = setInterval(function() {
         GameState.timeOff--;
@@ -24,9 +33,18 @@ function countdownTimer(){
         }
     }, 1000);}
 
-function nextButton(){
+var questions = [
+{
+    question: "What is Javascript",
+    answers: [
+        {"A programming language": true},
+        {"A sandwich": false },
+        {"A sandwich": false },
+        {"A sandwich": false },
+
+    ]
+}
+]
 
 }
-    var next
 
-//}>NEXT</button}
