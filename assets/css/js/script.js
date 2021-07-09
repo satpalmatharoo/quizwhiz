@@ -13,10 +13,6 @@ var GameState = {
     timeOff: 60}
 
 
-//var answerElement = document.querySelector (answer)
-
-
-
 // activating Start btn
 start.addEventListener("click",()=>{
     console.log("hello");
@@ -37,20 +33,42 @@ next.addEventListener("click",()=>{
 questionOption.addEventListener("click",(event)=>{
    var isCorrect = event.target.getAttribute("data-isCorrect")
    console.log(isCorrect);
-// Change class of current question
 
+   // Change class of current question
 var curQuestion = document.querySelector (`[data-index = "${currentQuestion}"]`)
 console.log (curQuestion)
 curQuestion.classList.add("hide")
 currentQuestion = currentQuestion +1
+
 // Change class of next question
 var nextQuestion =document.querySelector (`[data-index = "${currentQuestion}"]`) 
 nextQuestion.classList.remove("hide")
 // If correct then increase the score
-if (isCorrect) {score +=1}
-else {GameState.timeOff -=10}
 // if incorrect reduce the time
+if (isCorrect) {score +=1}
+else {GameState.timeOff =-10}
 
+questionOption.addEventListener("click",(event)=>{
+    var isCorrect = event.target.getAttribute("data-isCorrect")
+    console.log(isCorrect);
+ 
+    // Change class of current question
+ var curQuestion = document.querySelector (`[data-index = "${currentQuestion}"]`)
+ console.log (curQuestion)
+ curQuestion.classList.add("hide")
+ currentQuestion = currentQuestion +1
+ 
+ // Change class of next question
+ var nextQuestion =document.querySelector (`[data-index = "${currentQuestion}"]`) 
+ nextQuestion.classList.remove("hide")
+ // If correct then increase the score
+ // if incorrect reduce the time
+ if (isCorrect) {score +=1}
+ else {GameState.timeOff =-60}
+
+ 
+
+ 
 // If last question end quiz
 
 })
@@ -70,11 +88,4 @@ function countdownTimer(){
         }
     }, 1000);}
     countdownTimer();
-// //  var questions = [
-//  {
-//     question: "What is Javascript",
-//     answers: [
-//      {"A programming language": true},
-//      {"A sandwich": false },
-//      {"A sandwich": false },
-//      {"A sandwich": false },
+})
